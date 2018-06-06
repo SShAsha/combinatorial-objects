@@ -9,19 +9,18 @@ OEIS: [A001700](http://oeis.org/A001700).
 [Wikipedia](https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics)) - общее описание,
 [Wikipedia](https://en.wikipedia.org/wiki/Composition_(combinatorics)).
 
-Предподсчёт: O(n), где n = 31 &mdash; максимальное число,
-для которого количество разбиений числа n на n неотрицательных слагаемых с учетом порядка помещается в `int64_t`.
+Предподсчёт: нет.
 
-Функция `total`: O(1).
+Функция `total`: O(n).
 
-Функция `generate_all`: O(n) = O(n).
+Функция `generate_all`: O(n * total(n)) = O(n^2).
 
 Функция `is_valid`: O(n).
 
-Функция `number_by_object`: O(generate_all(n)) = O(n) .
+Функция `number_by_object`: O(generate_all(n) * total(n)) = O(n^3) .
 
-Функция `object_by_number`: O(generate_all(n)) = O(n).
+Функция `object_by_number`: O(generate_all(n) * total(n)) = O(n^3).
 
-Функция `prev`: O(n).
+Функция `prev`: O(number_by_object(n) * object_by_number(n)).
 
-Функция `next`: O(n).
+Функция `next`: O(number_by_object(n) * object_by_number(n)).
