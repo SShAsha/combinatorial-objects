@@ -26,6 +26,7 @@ int64_t Composition::total(int n)
 vector <vector <int>> Composition::generate_all(int n)
 {
 	vector <vector <int>> all;
+	int i;
 	if (n < 1)
 		return vector <vector <int> > ();
     else
@@ -82,7 +83,7 @@ int64_t Composition::number_by_object(vector <int> const& v)
 
 vector <int> Composition::object_by_number(int n, int64_t k)
 {
-    if ((k < 0) || (k >= total(n))) return;
+    if ((k < 0) || (k >= total(n))) return vector <vector <int> > ();
     else
     {
         vector <vector <int>> all(total(n));
