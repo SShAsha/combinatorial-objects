@@ -102,10 +102,12 @@ bool Composition::is_valid(vector <int> const& v)
 
 int64_t Composition::number_by_object(vector <int> const & v)
 {
+	vector <int> k;
+	int64_t c = 0;
+	if (k == v) return c;
 	int n = v.size();
 	vector <vector <int>> all(total(n));
 	all = generate_all(n);
-	int64_t c = 0;
 	while ((all[c] != v) && (c <= INT64_MAX)) c++;
 	if (all[c] == v) return c;
 	else return INT64_MAX;
@@ -113,6 +115,7 @@ int64_t Composition::number_by_object(vector <int> const & v)
 
 vector <int> Composition::object_by_number(int n, int64_t k)
 {
+	if (n == 0) return vector <int>();
 	if ((k < 0) || (k >= total(n))) return vector <int>();
 	else
 	{
