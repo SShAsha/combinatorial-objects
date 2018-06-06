@@ -11,7 +11,30 @@ string Composition::name()
 	return "Composition";
 }
 
+vector <int64_t> init_f()
+{
+	vector <int64_t> f;
+	f.push_back(1);
+	f.push_back(1);
+	while (true)
+	{
+		int64_t v = f[f.size() - 1] * (2 * (f.size() - 1) + 1) * 2 / f.size();
+		if (v < f[f.size() - 1])  // overflow
+		{
+			return f;
+		}
+		f.push_back(v);
+	}
+}
+
+vector <int64_t> Composition::f = init_f();
+
 int64_t Composition::total(int n)
+{
+	return (0 <= n && n < (int)(f.size())) ? f[n] : INT64_MAX;
+}
+
+/*int64_t Composition::total(int n)
 {
     int64_t t;
 	if ((n > 0) && (n < 35))
@@ -21,36 +44,35 @@ int64_t Composition::total(int n)
         }
     else
         return INT64_MAX;
-}
+}*/
 
 vector <vector <int>> Composition::generate_all(int n)
 {
 	vector <vector <int>> all;
 	int i;
 	if (n < 1)
-		return vector <vector <int> > ();
-    else
+		return vector <vector <int>> ();
+    	else
         {
             vector <vector <int>> all(total(n));
-            for (i = 0; i < n - 1; i++) all[0][i] = 0;
-            all[0][n-1] = n;
-            for (i = 1; i < all.size() - 1; i++)
+            for (i = 0; i < n - 1; i++) all[0].push_back(0);
+		all[0].push_back(n);
+            for (i = 1; i < all.size(); i++)
             {
                 int p, cur;
                 all[i] = all[i - 1];
                 p = n - 1;
                 cur = all[i][p];
-                while (cur == 0) p--;
-                if (p != 0)
-                    {
-                        cur = all[i][p];
-                        all[i][p - 1]++;
-                        while (p < n - 1) all[i][p] = 0;
-                        all[i][p] = cur - 1;
-                    }
+                while (cur == 0) 
+		{
+			p--;
+			cur = all[i][p];
+		}
+                 cur = all[i][p];
+                 all[i][p - 1]++;
+                 while (p < n - 1) all[i][p] = 0;
+                 all[i][p] = cur - 1;
             }
-            all[all.size()][0] = n;
-            for (i = 1; i < n; i++) all[all.size()][i] = 0;
             return all;
         }
 }
