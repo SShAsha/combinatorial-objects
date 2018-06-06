@@ -20,6 +20,8 @@ vector <int64_t> init_f()
 	while (true)
 	{
 		int64_t v = f[f.size() - 1] * (2 * (f.size() - 1) + 1) * 2 / (f.size());
+		if (f.size() == 32) v = 916312070471295267;
+		if (f.size() == 33) v = 3609714217008132870;
 		if (v < f[f.size() - 1])  // overflow
 		{
 			return f;
