@@ -14,13 +14,13 @@ OEIS: [A001700](http://oeis.org/A001700).
 
 Функция `total`: O(1).
 
-Функция `generate_all`: O(n) = O(n).
+Функция `generate_all`: O(n).
 
 Функция `is_valid`: O(n).
 
-Функция `number_by_object`: O(n) = O(n) .
+Функция `number_by_object`: O(n).
 
-Функция `object_by_number`: O(n) = O(n).
+Функция `object_by_number`: O(n).
 
 Функция `prev`: O(n).
 
