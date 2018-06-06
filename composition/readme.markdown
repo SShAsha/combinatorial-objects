@@ -12,16 +12,16 @@ OEIS: [A001700](http://oeis.org/A001700).
 Предподсчёт: O(n), где n = 31 &mdash; максимальное число,
 для которого количество разбиений числа n на n неотрицательных слагаемых с учетом порядка помещается в `int64_t`.
 
-Функция `total`: O(n).
+Функция `total`: O(1).
 
-Функция `generate_all`: O(n * total(n)) = O(n^2).
+Функция `generate_all`: O(n) = O(n).
 
 Функция `is_valid`: O(n).
 
-Функция `number_by_object`: O(generate_all(n) * total(n)) = O(n^3) .
+Функция `number_by_object`: O(generate_all(n)) = O(n) .
 
-Функция `object_by_number`: O(generate_all(n) * total(n)) = O(n^3).
+Функция `object_by_number`: O(generate_all(n)) = O(n).
 
-Функция `prev`: O(number_by_object(n) * object_by_number(n)).
+Функция `prev`: O(n).
 
-Функция `next`: O(number_by_object(n) * object_by_number(n)).
+Функция `next`: O(n).
