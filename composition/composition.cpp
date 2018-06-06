@@ -104,7 +104,7 @@ int64_t Composition::number_by_object(vector <int> const & v)
 	vector <vector <int>> all(total(n));
 	all = generate_all(n);
 	int64_t c = 0;
-	while ((all[c] != v) || (c <= INT64_MAX)) c++;
+	while ((all[c] != v) && (c <= INT64_MAX)) c++;
 	if (all[c] == v) return c;
 	else return INT64_MAX;
 }
